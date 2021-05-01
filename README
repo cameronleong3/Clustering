@@ -1,0 +1,39 @@
+All of the programs use the well-known Iris and Wine datasets.
+
+Iris Dataset:
+Contains 150 instances with 4 attributes each
+There are 3 classes of flowers, so I chose 3 clusterings
+Target clustering can be found using .target()
+Wine Dataset:
+Contains 178 instances with 13 attributes each
+There are 3 classes of wine, so 3 clusterings is ideal for this dataset as well
+Target clustering can be found using .target()
+
+General:
+My clusters are stored in an array called clusters[]. 
+The value at each index is the cluster which the item of that index belongs to. For instance, if clusters[0] = 1, then item 0 belongs to cluster 1.
+I measure the accuracy of the clusterings by computing the Hamming distance.
+
+
+Single Linkage:
+This program starts with each point in its own cluster. In each iteration, the two closest points (from different clusters) are found and joined to 
+the same cluster. The program keeps iterating until there are only 3 clusters left. Then the program outputs the clusters, showing the indexes of the 
+points that are in each cluster. The hamming distance is also outputted.
+
+Average Linkage:
+This program starts with each point in its own cluster. In each iteration, the program calculates the two closest points or clusters based on average
+distance, meaning the average of the distances between all combinations of points of the two clusters in question. Then, the two closest clusters from
+this calculation are joined into one cluster. The program keeps iterating until there are only 3 clusters left. Then the program outputs the clusters, 
+showing the indexes of the points that are in each cluster. The hamming distance is also outputted.
+
+Lloyd's Method:
+This program implements Lloyd's method, an approximation of kmeans. 3 random centers are initially chosen from the data points. At each iteration, each
+point is clustered with its nearest center, and the average of each cluster is calculated and becomes the new center for that cluster. The clustering
+and recalculation of centers continues until there is no change. The kmeans cost for this clustering (the sum of squared distances between each point and its center)
+is calculated. Then, this whole process (starting with the random centers) is repeated 100 times,and the best clustering (based on lowest kmeans cost) is saved 
+and outputted along with the hamming distance.
+
+Kmeans++:
+This program is similar to Lloyd's, with the main difference being how the centers are calculated. In kmeans++, one center is first randomly chosen from the data points.
+Then, each subsequent center is chosen at random, with an increase in probability of being chosen the further the point is from its closest center. This is done until
+3 centers are chosen, and then each point is clustered to its closest center and the kmeans cost and hamming distance are calculated.
